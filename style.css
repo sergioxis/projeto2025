@@ -10,7 +10,7 @@
    --stroke-color:rgba(255,255,255,0.5);
    --surface-color: rgba(255,255,255,0.05);
    --surface-color-hover:rgba(0,0,0,0.02);
-   --highligth-color: rgba(255,255,255,0.2);
+   --highlight-color: rgba(255,255,255,0.2);
    --switch-bg-url:url(./assets/assets/moon-stars.svg);
    
 }
@@ -21,14 +21,14 @@
    --stroke-color: rgba(0,0,0,0.5);
    --surface-color: rgba(0,0,0,0.5);
    --surface-color-hover: rgba(0,0,0,0.02);
-   --highligth-color: rgba(0,0,0,0.1);
+   --highlight-color: rgba(0,0,0,0.1);
    --switch-bg-url:url(./assets/assets/sun.svg);
    
 }
 
 body {
    
-   background: var(--bg-url) top center/cover;
+   background: var(--bg-url) no-repeat top center/cover;
    height: 100vh;
 }
 body * {
@@ -40,6 +40,7 @@ body * {
    width: 100%;
    max-width: 588px;
    margin: 56px auto 0px;
+   padding: 0 24px;
 }
 
 #profile {
@@ -49,7 +50,7 @@ body * {
 
 #profile img {
    width: 112px;
-   margin: auto;
+   
 }
 
 #profile p {
@@ -75,14 +76,18 @@ body * {
    transform:translateY(-50%) ;
    top: 50%;
    left: 0;
+   animation:slide-back 0.2s;
     
 }
 
 .light #switch button{
-   right: 0;
-   left: initial;
+   animation: slide-in 0.4s forwards;
+   
 }
 
+#switch button:hover {
+   outline: 8px solid var(--highlight-color);
+}
 #switch span{
    display: block;
    width: 64px;
@@ -113,7 +118,7 @@ ul li a {
    border: 1px solid var(--stroke-color);
    border-radius: 8px;
    backdrop-filter: blur(4px);
-   -webkit-backdrop-filter: blub(4px);
+   -webkit-backdrop-filter: blur(4px);
    text-decoration: none;
    font-weight: 500;
    transition: all 0.2s;
@@ -127,7 +132,7 @@ ul li a:hover{
 #social_links {
    display: flex;
    justify-content: center;
-   padding: 24ps 0;
+   padding: 24px 0;
    font-size: 24px;
 }
 
@@ -141,7 +146,7 @@ ul li a:hover{
 }
 
 #social_links a:hover {
-   background:var(--highligth-color)
+   background:var(--highlight-color);
   
 }
 
@@ -153,10 +158,28 @@ footer {
 
 @media (min-width: 700px) {
    :root {
-      --bg-url: url(./assets/assets/bg-dark.jpg);
+      --bg-url: url(./assets/assets/bg-desktop.jpg);
     }
 
     .light {
-      --br-url: url(./assets/assets/bg-ligth.jpg);
+      --bg-url: url(./assets/assets/bg-desktop-light.jpg);
     }
+}
+
+@keyframes slide-in {
+   from {
+      left: 0;
+   }
+   to {
+      left:50%;
+   }
+}
+
+@keyframes slide-back {
+   from {
+      left:50%;
+   }
+   to{
+      left:0;
+   }
 }
